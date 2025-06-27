@@ -50,7 +50,7 @@ const Sidebar = ({ isOpen, toggleSidebar, selectedGroupIndex = 0, onSelectGroup,
                 "font-medium text-base text-foreground/90 transition-all duration-200 whitespace-nowrap overflow-hidden",
                 isOpen ? "opacity-100 max-w-full mr-2 pl-3" : "opacity-0 max-w-0 md:max-w-0"
               )}>
-                群列表
+                群列表（@~@）
               </span>
               <Button 
                 variant="ghost" 
@@ -121,7 +121,9 @@ const Sidebar = ({ isOpen, toggleSidebar, selectedGroupIndex = 0, onSelectGroup,
           </div>
           
           {/* 广告位 */}
+          {/* jingzl - 屏蔽
           <AdSection isOpen={isOpen} />
+          */}
 
           {/* 用户信息模块 */}
           <UserSection isOpen={isOpen} />
@@ -138,11 +140,12 @@ const Sidebar = ({ isOpen, toggleSidebar, selectedGroupIndex = 0, onSelectGroup,
                     isOpen ? "text-lg" : "text-xs max-w-0 opacity-0 md:max-w-0"
                   )}
                 >
-                  botgroup.chat
+                  AI群聊
                 </span>
               </a>
             </div>
             
+            {/* jingzl - 屏蔽 GitHubButton
             {isOpen && (
               <div className="flex items-center justify-left h-8">
                 <GitHubButton 
@@ -156,6 +159,7 @@ const Sidebar = ({ isOpen, toggleSidebar, selectedGroupIndex = 0, onSelectGroup,
                 </GitHubButton>
               </div>
             )}
+            */}
           </div>
         </div>
       </div>
