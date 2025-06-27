@@ -71,7 +71,7 @@ const ChatUI = () => {
   const [allNames, setAllNames] = useState([]);
   const [showMembers, setShowMembers] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [showAd, setShowAd] = useState(true);
+  const [showAd, setShowAd] = useState(false); // jingzl - 关闭广告栏 Ad
   const [inputMessage, setInputMessage] = useState("");
   const [pendingContent, setPendingContent] = useState("");
   const [isTyping, setIsTyping] = useState(false);
