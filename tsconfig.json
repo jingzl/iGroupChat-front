@@ -12,10 +12,10 @@
       "baseUrl": ".",
       "paths": {
         "@/*": ["./src/*"]
-      },
+      }
       //"moduleResolution": "node",
-      "composite": true,
-      "noImplicitAny": false
+      //"composite": true,
+      //"noImplicitAny": false
     }
   }
   
