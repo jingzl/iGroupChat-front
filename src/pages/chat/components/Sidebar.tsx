@@ -92,6 +92,8 @@ const Sidebar = ({ isOpen, toggleSidebar, selectedGroupIndex = 0, onSelectGroup,
                 </a>
               ))}
               
+              {/* 创建新群聊按钮 */}
+              { /* jingzl - 屏蔽
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -117,6 +119,8 @@ const Sidebar = ({ isOpen, toggleSidebar, selectedGroupIndex = 0, onSelectGroup,
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
+              */}
+
             </nav>
           </div>
           
@@ -140,7 +144,7 @@ const Sidebar = ({ isOpen, toggleSidebar, selectedGroupIndex = 0, onSelectGroup,
                     isOpen ? "text-lg" : "text-xs max-w-0 opacity-0 md:max-w-0"
                   )}
                 >
-                  AI群聊
+                  格格群聊
                 </span>
               </a>
             </div>

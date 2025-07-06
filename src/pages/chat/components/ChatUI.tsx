@@ -209,8 +209,8 @@ const ChatUI = () => {
   // 5. 加载检查
   if (isInitializing || !group) {
     return (
-      <div className="fixed inset-0 bg-gradient-to-br from-orange-50 via-orange-50/70 to-orange-100 flex items-center justify-center">
-        <div className="w-8 h-8 animate-spin rounded-full border-4 border-orange-500 border-t-transparent"></div>
+      <div className="fixed inset-0 bg-gradient-to-br from-green-50 via-green-50/70 to-green-100 flex items-center justify-center">
+        <div className="w-8 h-8 animate-spin rounded-full border-4 border-green-500 border-t-transparent"></div>
       </div>
     );
   }
@@ -327,7 +327,7 @@ const ChatUI = () => {
           if (done) {
             //如果completeResponse为空，
             if (completeResponse.trim() === "") {
-            completeResponse = "对不起，我还不够智能，服务又断开了。";
+            completeResponse = "对不起，我还不够智能，服务又断开了。（1）";
             setMessages(prev => {
               const newMessages = [...prev];
               const aiMessageIndex = newMessages.findIndex(msg => msg.id === aiMessage.id);
@@ -349,6 +349,8 @@ const ChatUI = () => {
             const line = buffer.slice(0, newlineIndex);
             buffer = buffer.slice(newlineIndex + 1);
             
+            console.log("读取到一行数据:", line);
+
             if (line.startsWith('data: ')) {
               try {
                 const data = JSON.parse(line.slice(6));
@@ -420,7 +422,8 @@ const ChatUI = () => {
   return (
     <>
       <KaTeXStyle />
-      <div className="fixed inset-0 bg-gradient-to-br from-orange-50 via-orange-50/70 to-orange-100 flex items-start md:items-center justify-center overflow-hidden">
+      {/* jingzl - 整体页面背景色的设置 background-color green 渐变 */}
+      <div className="fixed inset-0 bg-gradient-to-br from-green-50 via-green-50/70 to-green-100 flex items-start md:items-center justify-center overflow-hidden">
         <div className="h-full flex bg-white w-full mx-auto relative shadow-xl md:max-w-5xl md:h-[96dvh] md:my-auto md:rounded-lg">
           {/* 传递 selectedGroupIndex 和 onSelectGroup 回调给 Sidebar */}
           <Sidebar 

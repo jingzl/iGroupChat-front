@@ -55,10 +55,12 @@ export const MembersManagement = ({
           </div>
           <div className="flex justify-between items-center mb-4">
             <span className="text-sm text-gray-500">当前成员（{users.length}）</span>
+            {/* jingzl - 屏蔽
             <Button variant="outline" size="sm">
               <UserPlus className="w-4 h-4 mr-2" />
               添加成员
             </Button>
+            */}
           </div>
           <ScrollArea className="h-[calc(100vh-150px)]">
             <div className="space-y-2 pr-4">
