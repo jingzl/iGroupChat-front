@@ -22,6 +22,7 @@ import { MembersManagement } from '@/pages/chat/components/MembersManagement';
 import Sidebar from './Sidebar';
 import { AdBanner, AdBannerMobile } from './AdSection';
 import { useUserStore } from '@/store/userStore';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { getAvatarData } from '@/utils/avatar';
 
 
@@ -55,6 +56,7 @@ const KaTeXStyle = () => (
 
 const ChatUI = () => {
   const userStore = useUserStore();
+  const isMobile = useIsMobile();
 
   //获取url参数
   const urlParams = new URLSearchParams(window.location.search);
@@ -77,7 +79,14 @@ const ChatUI = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [mutedUsers, setMutedUsers] = useState<string[]>([]);
   const [showPoster, setShowPoster] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false); // 默认关闭，稍后根据设备类型设置
+
+  // 根据设备类型设置侧边栏默认状态
+  useEffect(() => {
+    if (isMobile !== undefined) {
+      setSidebarOpen(!isMobile); // 手机端关闭，PC端开启
+    }
+  }, [isMobile]);
 
   // 2. 所有的 useRef 声明
   const currentMessageRef = useRef<number | null>(null);
@@ -286,6 +295,7 @@ const ChatUI = () => {
             index: i,
             aiName: selectedGroupAiCharacters[i].name,
             rag: selectedGroupAiCharacters[i].rag,
+            knowledge: selectedGroupAiCharacters[i].knowledge,
             custom_prompt: selectedGroupAiCharacters[i].custom_prompt.replace('#groupName#', group.name) + "\n" + group.description
           }),
         });
@@ -454,10 +464,11 @@ const ChatUI = () => {
                 
                 {/* 右侧头像组和按钮 */}
                 <div className="flex items-center">
-                {/* 广告位 手机端不展示*/}
+                {/* 广告位 手机端不展示 */}
                  <div className="hidden md:block">
                    <AdBanner show={showAd} closeAd={() => setShowAd(false)} />
                  </div>
+                
                   <div className="flex -space-x-2 ">
                     {users.slice(0, 4).map((user) => {
                       const avatarData = getAvatarData(user.name);

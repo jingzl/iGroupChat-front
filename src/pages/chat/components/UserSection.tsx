@@ -4,7 +4,7 @@ import { Edit2Icon, LogOutIcon, CheckIcon, XIcon } from 'lucide-react';
 import { request } from '@/utils/request';
 import { useUserStore } from '@/store/userStore';
 import { getAvatarData } from '@/utils/avatar';
-
+import { toast } from 'sonner';
 
 interface UserSectionProps {
   isOpen: boolean;
@@ -16,6 +16,7 @@ export const UserSection: React.FC<UserSectionProps> = ({ isOpen }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [newNickname, setNewNickname] = useState('');
+  
   const [uploadingAvatar, setUploadingAvatar] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const userStore = useUserStore();
@@ -31,13 +32,12 @@ export const UserSection: React.FC<UserSectionProps> = ({ isOpen }) => {
         body: JSON.stringify({ nickname: newNickname.trim() })
       });
       const { data } = await response.json();
-      console.log('更新用户信息', data);
       //更新用户信息
       userStore.setUserInfo(data);
-      
+      toast.success('更新昵称成功');
       setIsEditing(false);
     } catch (error) {
-      console.error('更新昵称失败:', error);
+      toast.error(error instanceof Error ? error.message : '更新昵称失败');
     } finally {
       setIsLoading(false);
     }
@@ -55,7 +55,10 @@ export const UserSection: React.FC<UserSectionProps> = ({ isOpen }) => {
       const response = await request('/api/user/upload', {
         method: 'POST'
       });
-      const { uploadURL, id } = await response.json();
+      const { data: uploadData } = await response.json();
+      const uploadURL = uploadData.uploadURL;
+      const id = uploadData.id;
+
       
       // 2. 上传图片到 Cloudflare Images
       const formData = new FormData();
