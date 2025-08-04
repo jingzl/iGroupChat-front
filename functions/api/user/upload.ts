@@ -20,5 +20,5 @@ export const onRequestPost: PagesFunction<Env> = async (context) =>{
     const data1 = await response.json();
     console.log('上传头像', data1);
     //下发image前缀
-    return Response.json(data1.result);
+    return Response.json({data :data1.result});
   }
