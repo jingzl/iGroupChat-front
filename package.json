@@ -1,5 +1,5 @@
 {
-  "name": "chat-ui",
+  "name": "igroupchat-front",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -24,6 +24,7 @@
     "clsx": "^2.1.1",
     "dom-to-image": "^2.6.0",
     "dom-to-image-more": "^3.5.0",
+    "go-captcha-react": "^1.0.4",
     "html2canvas": "^1.4.1",
     "katex": "^0.16.21",
     "lucide-react": "^0.263.1",
