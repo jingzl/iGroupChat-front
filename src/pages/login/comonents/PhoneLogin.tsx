@@ -89,7 +89,7 @@ const PhoneLogin: React.FC<PhoneLoginProps> = ({ handleLoginSuccess }) => {
             style={{fontFamily: 'Audiowide, system-ui', color: '#ff6600'}} 
             className={`${isMobile ? 'text-2xl' : 'text-3xl'} ml-2`}
           >
-            botgroup.chat
+            格格群聊
           </span>
         </div>
         <div className={`text-gray-500 ${isMobile ? 'mb-6' : 'mb-4'} text-center ${isMobile ? 'text-sm' : 'text-base'}`}>
