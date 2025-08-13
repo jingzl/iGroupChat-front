@@ -3,5 +3,5 @@
 window.APP_CONFIG = {
   // 权限验证开关：'1' 开启，'0' 关闭
   AUTH_ACCESS: "1",
-  ICP_NUMBER: "",
+  ICP_NUMBER: "hello world !",
 }; 
