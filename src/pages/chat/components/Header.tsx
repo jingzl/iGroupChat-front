@@ -13,7 +13,7 @@ const Header: React.FC = () => {
           <a href="/" className="flex items-center">
             <img src="/img/logo.svg" alt="logo" className="h-6 w-6 mr-2" />
             <span style={{ fontFamily: 'Audiowide, system-ui', color: '#ff6600' }} className="text-2xl">
-              botgroup.chat
+              格格群聊
             </span>
           </a>
         </div>
