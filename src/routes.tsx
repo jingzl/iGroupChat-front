@@ -4,6 +4,8 @@ import Chat from './pages/chat';
 import BasicLayout from './layouts/BasicLayout';
 import AuthGuard from './components/AuthGuard';
 
+console.log('createBrowserRouter');
+
 export const router = createBrowserRouter([
   {
     path: '/login',
@@ -23,4 +25,4 @@ export const router = createBrowserRouter([
       },
     ],
   },
-]); 
+]);

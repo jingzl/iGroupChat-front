@@ -4,6 +4,8 @@ import { router } from './routes';
 
 function App() {
   console.log("App rendering"); // 添加日志
+  console.log('window.APP_CONFIG:', window.APP_CONFIG);
+
   return (
     <>
       <RouterProvider router={router} />

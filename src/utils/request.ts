@@ -1,8 +1,9 @@
 // 优先使用运行时配置，降级到构建时配置
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+//const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+const API_BASE_URL = 'http://localhost:8080';
 export async function request(url: string, options: RequestInit = {}) {
     const token = localStorage.getItem('token');
-    
+
     const headers = {
         'Content-Type': 'application/json',
         ...options.headers,
@@ -12,7 +13,7 @@ export async function request(url: string, options: RequestInit = {}) {
         headers['Authorization'] = `Bearer ${token}`;
     }
 
-
+    console.log('Request URL:', API_BASE_URL + url);
     try {
         const response = await fetch(`${API_BASE_URL}${url}`, {
             ...options,
@@ -28,6 +29,7 @@ export async function request(url: string, options: RequestInit = {}) {
 
         if (!response.ok) {
             // 解析错误信息用于抛出异常
+            console.log('Request error1:', response.json());
             const data = await response.json();
             throw new Error(data.message || 'Request failed');
         }
