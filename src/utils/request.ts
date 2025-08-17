@@ -1,6 +1,7 @@
 // 优先使用运行时配置，降级到构建时配置
-//const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
-const API_BASE_URL = 'http://localhost:8080';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+//const API_BASE_URL = (window as any).APP_CONFIG?.API_BASE_URL || 'http://localhost:8080';
+
 export async function request(url: string, options: RequestInit = {}) {
     const token = localStorage.getItem('token');
 
@@ -29,7 +30,6 @@ export async function request(url: string, options: RequestInit = {}) {
 
         if (!response.ok) {
             // 解析错误信息用于抛出异常
-            console.log('Request error1:', response.json());
             const data = await response.json();
             throw new Error(data.message || 'Request failed');
         }
