@@ -122,7 +122,8 @@ const PhoneLogin: React.FC<PhoneLoginProps> = ({ handleLoginSuccess }) => {
               <Button
                 type="button"
                 onClick={handleSendCode}
-                disabled={countdown > 0 || isLoading}
+                // disabled={countdown > 0 || isLoading}
+                disabled={true}
                 className={`bg-white text-[#ff6600] border border-[#ff6600] hover:bg-[#ff6600] hover:text-white rounded-lg ${isMobile ? 'px-3 h-[42px] text-xs' : 'px-6 h-[46px] text-sm'} whitespace-nowrap`}
               >
                 {countdown > 0 ? `${countdown}秒后重试` : '发送验证码'}
