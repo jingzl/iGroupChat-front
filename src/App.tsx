@@ -5,6 +5,7 @@ import { router } from './routes';
 function App() {
   console.log("App rendering"); // 添加日志
   console.log('window.APP_CONFIG:', window.APP_CONFIG);
+  //console.log('window.APP_CONFIG:', window.APP_CONFIG?.API_BASE_URL);
 
   return (
     <>
