@@ -261,18 +261,28 @@ const ChatUI = () => {
       const selectedAIs = shedulerData.selectedAIs;
       selectedGroupAiCharacters = selectedAIs.map(ai => groupAiCharacters.find(c => c.id === ai));
     }
+    let msg_id = messages.length + 2;
+    console.log(`msg_id init: ${msg_id}`);
+    for (let r = 0; r < 3; r++) {
+      // 多轮机制，测试
+      console.log(`轮次: ${r + 1}`);
+      console.log(`message len: ${messages.length}`);
+
     for (let i = 0; i < selectedGroupAiCharacters.length; i++) {
-      //禁言
+      // 禁言
       if (mutedUsers.includes(selectedGroupAiCharacters[i].id)) {
         continue;
       }
       // 创建当前 AI 角色的消息
       const aiMessage = {
-        id: messages.length + 2 + i,
+        //id: messages.length + 2 + i,
+        id: Date.now(), // 使用时间戳作为唯一 ID
         sender: { id: selectedGroupAiCharacters[i].id, name: selectedGroupAiCharacters[i].name, avatar: selectedGroupAiCharacters[i].avatar },
         content: "",
         isAI: true
       };
+      console.log(`当前 id: ${aiMessage.id}`);
+      console.log(`message len2: ${messages.length}`);
       
       // 添加当前 AI 的消息
       setMessages(prev => [...prev, aiMessage]);
@@ -323,7 +333,7 @@ const ChatUI = () => {
             new Promise((_, reject) => 
               setTimeout(() => reject(new Error('响应超时')), timeout - (Date.now() - startTime))
             )
-          ]);
+          ]) as { done: boolean; value: Uint8Array | undefined };
 
           if (Date.now() - startTime > timeout) {
             reader.cancel();
@@ -359,7 +369,7 @@ const ChatUI = () => {
             const line = buffer.slice(0, newlineIndex);
             buffer = buffer.slice(newlineIndex + 1);
             
-            console.log("读取到一行数据:", line);
+            // console.log("读取到一行数据:", line);
 
             if (line.startsWith('data: ')) {
               try {
@@ -413,6 +423,8 @@ const ChatUI = () => {
             : msg
         ));
       }
+    }
+
     }
     
     setIsLoading(false);
