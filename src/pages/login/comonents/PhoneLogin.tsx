@@ -7,10 +7,11 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import ClickTextCapt from "@/components/goCaptcha/ClickTextCapt.jsx";
 
 interface PhoneLoginProps {
-  onLogin: (phone: string, code: string) => void;
+  onLogin?: (phone: string, code: string) => void;
+  handleLoginSuccess: (token: string) => void;
 }
 
-const PhoneLogin: React.FC<PhoneLoginProps> = ({ handleLoginSuccess }) => {
+const PhoneLogin: React.FC<PhoneLoginProps> = ({ onLogin, handleLoginSuccess }) => {
   const [phone, setPhone] = useState('');
   const [code, setCode] = useState('');
   const [countdown, setCountdown] = useState(0);
@@ -57,6 +58,12 @@ const PhoneLogin: React.FC<PhoneLoginProps> = ({ handleLoginSuccess }) => {
     
     if (!phone || !code) {
       toast.error('请输入手机号和验证码');
+      return;
+    }
+
+    // 如果有 onLogin 回调，先调用它
+    if (onLogin) {
+      onLogin(phone, code);
       return;
     }
 
