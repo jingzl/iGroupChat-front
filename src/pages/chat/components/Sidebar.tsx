@@ -50,7 +50,7 @@ const Sidebar = ({ isOpen, toggleSidebar, selectedGroupIndex = 0, onSelectGroup,
                 "font-medium text-base text-foreground/90 transition-all duration-200 whitespace-nowrap overflow-hidden",
                 isOpen ? "opacity-100 max-w-full mr-2 pl-3" : "opacity-0 max-w-0 md:max-w-0"
               )}>
-                群列表（@~@）
+                群列表
               </span>
               <Button 
                 variant="ghost" 
