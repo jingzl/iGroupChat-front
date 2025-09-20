@@ -130,6 +130,8 @@ const ChatUI = () => {
         let avatar_url = null;
         let nickname = '我';
         setAllNames(allNames);
+        // 调试信息
+        console.log("user:", data.user);
         if (data.user && data.user != null) {
           const response1 = await request('/api/user/info');
           const userInfo = await response1.json();
