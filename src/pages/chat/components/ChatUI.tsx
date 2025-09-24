@@ -603,8 +603,8 @@ const ChatUI = () => {
                   <div ref={messagesEndRef} />
                   {/* 添加一个二维码 */}
                   <div id="qrcode" className="flex flex-col items-center hidden">
-                    <img src="/img/qr.png" alt="QR Code" className="w-24 h-24" />
-                    <p className="text-sm text-gray-500 mt-2 font-medium tracking-tight bg-gray-50 px-3 py-1 rounded-full">扫码体验AI群聊</p>
+                    <img src="/img/tbg-qrcode.jpg" alt="QR Code" className="w-32 h-32" />
+                    <p className="text-sm text-gray-500 mt-2 font-medium tracking-tight bg-gray-50 px-3 py-1 rounded-full">扫码体验AI</p>
                   </div>
                 </div>
               </ScrollArea>
