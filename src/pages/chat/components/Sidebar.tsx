@@ -138,13 +138,14 @@ const Sidebar = ({ isOpen, toggleSidebar, selectedGroupIndex = 0, onSelectGroup,
             <div className="flex items-center justify-left mb-3">
               <a href="/" className="flex items-center">
                 <span 
-                  style={{ fontFamily: 'Audiowide, system-ui', color: '#ff6600' }} 
+                  style={{ fontFamily: 'Audiowide, system-ui', color: '#006affff' }} 
                   className={cn(
                     "transition-all duration-200 whitespace-nowrap overflow-hidden",
                     isOpen ? "text-lg" : "text-xs max-w-0 opacity-0 md:max-w-0"
                   )}
                 >
                   格格群聊
+                  <span className="text-xs text-gray-500 ml-1">v0.2</span>
                 </span>
               </a>
             </div>
