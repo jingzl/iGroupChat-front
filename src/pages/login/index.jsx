@@ -49,8 +49,8 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      {/* 切换登录方式的按钮 */}
-      {renderSwitchButton()}
+      {/* 切换登录方式的按钮 - 暂时屏蔽，等后台接口支持后开启 @ 20250923 */}
+      {/* {renderSwitchButton()} */}
       {loginType === 'phone' ? (
         <PhoneLogin handleLoginSuccess={handleLoginSuccess} />
       ) : (
