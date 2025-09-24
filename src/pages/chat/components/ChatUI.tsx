@@ -252,6 +252,7 @@ const ChatUI = () => {
     }));
     let selectedGroupAiCharacters = groupAiCharacters;
     if (!isGroupDiscussionMode) {
+      // 非群聊模式，使用调度者选择 AI 角色
       const shedulerResponse = await request(`/api/scheduler`, {
         method: 'POST',
         headers: {
@@ -263,8 +264,7 @@ const ChatUI = () => {
       const selectedAIs = shedulerData.selectedAIs;
       selectedGroupAiCharacters = selectedAIs.map(ai => groupAiCharacters.find(c => c.id === ai));
     }
-    let msg_id = messages.length + 2;
-    console.log(`msg_id init: ${msg_id}`);
+
     for (let r = 0; r < 3; r++) {
       // 多轮机制，测试
       console.log(`轮次: ${r + 1}`);
@@ -277,14 +277,12 @@ const ChatUI = () => {
       }
       // 创建当前 AI 角色的消息
       const aiMessage = {
-        //id: messages.length + 2 + i,
         id: Date.now(), // 使用时间戳作为唯一 ID
         sender: { id: selectedGroupAiCharacters[i].id, name: selectedGroupAiCharacters[i].name, avatar: selectedGroupAiCharacters[i].avatar },
         content: "",
         isAI: true
       };
       console.log(`当前 id: ${aiMessage.id}`);
-      console.log(`message len2: ${messages.length}`);
       
       // 添加当前 AI 的消息
       setMessages(prev => [...prev, aiMessage]);
