@@ -12,7 +12,7 @@ const Header: React.FC = () => {
         <div className="flex-1 flex items-center">
           <a href="/" className="flex items-center">
             <img src="/img/logo.svg" alt="logo" className="h-6 w-6 mr-2" />
-            <span style={{ fontFamily: 'Audiowide, system-ui', color: '#ff6600' }} className="text-2xl">
+            <span style={{ fontFamily: 'Audiowide, system-ui', color: '#006affff' }} className="text-2xl">
               格格群聊
             </span>
           </a>

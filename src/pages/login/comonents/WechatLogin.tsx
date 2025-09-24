@@ -126,7 +126,7 @@ const WechatLogin: React.FC<WechatLoginProps> = ({ handleLoginSuccess }) => {
         {/* Logo */}
         <div className="flex items-center justify-center mb-6">
           <span 
-            style={{fontFamily: 'Audiowide, system-ui', color: '#ff6600'}} 
+            style={{fontFamily: 'Audiowide, system-ui', color: '#006affff'}} 
             className={`${isMobile ? 'text-2xl' : 'text-3xl'} ml-2`}
           >
             格格群聊
